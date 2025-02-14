@@ -29,11 +29,6 @@ public class UsersDataSet implements Serializable { // Serializable Important to
     public UsersDataSet() {
     }
 
-    @SuppressWarnings("UnusedDeclaration")
-    public UsersDataSet(long id, String login, String email) {
-        this.setId(id);
-        this.setLogin(login);
-    }
 
     public UsersDataSet(String login, String password, String email) {
         this.setId(-1);

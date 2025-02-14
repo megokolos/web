@@ -3,7 +3,6 @@ package servlets;
 import DB.dataSets.UsersDataSet;
 import DB.executor.DBException;
 import accounts.AccountService;
-import accounts.UserProfile;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -19,10 +18,10 @@ import java.io.IOException;
  *         <p>
  *         Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
  */
-public class SessionsServlet extends HttpServlet {
+public class SignInServlet extends HttpServlet {
     private final AccountService accountService;
 
-    public SessionsServlet(AccountService accountService) {
+    public SignInServlet(AccountService accountService) {
         this.accountService = accountService;
     }
 
@@ -66,12 +65,6 @@ public class SessionsServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
-
-//        accountService.addSession(request.getSession().getId(), profile);
-//        Gson gson = new Gson();
-//        String json = gson.toJson(profile);
-//        response.setContentType("text/html;charset=utf-8");
-//        response.getWriter().println(json);
         response.getWriter().println("Authorized");
         response.setStatus(HttpServletResponse.SC_OK);
     }
