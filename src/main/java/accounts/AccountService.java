@@ -41,7 +41,7 @@ public class AccountService {
         loginToProfile.remove(usersDataSet.getLogin());
     }
 
-    public UsersDataSet getUserById(String login) throws DBException {
+    public UsersDataSet getUserByLogin(String login) throws DBException {
         return dbService.getUser(login);
     }
 

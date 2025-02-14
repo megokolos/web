@@ -56,7 +56,7 @@ public class SessionsServlet extends HttpServlet {
         }
         UsersDataSet usersDataSet = null;
         try {
-            usersDataSet = accountService.getUserById(login);
+            usersDataSet = accountService.getUserByLogin(login);
         } catch (DBException e) {
             throw new RuntimeException(e);
         }
