@@ -16,8 +16,8 @@ import java.util.Map;
  * Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
  */
 public class AccountService {
-    private Map<String, UserProfile> loginToProfile;
-    private Map<String, UserProfile> sessionIdToProfile;
+    private Map<String, UsersDataSet> loginToProfile;
+    private Map<String, UsersDataSet> sessionIdToProfile;
     private DBService dbService;
 
     public AccountService() {
@@ -33,24 +33,24 @@ public class AccountService {
         dbService.addUser(usersDataSet);
     }
 
-    public void addNewUser(UserProfile userProfile) {
-        loginToProfile.put(userProfile.getLogin(), userProfile);
+    public void addNewUserMap(UsersDataSet UsersDataSet) {
+        loginToProfile.put(UsersDataSet.getLogin(), UsersDataSet);
     }
 
-    public void deleteUser(UserProfile userProfile) {
-        loginToProfile.remove(userProfile.getLogin());
+    public void deleteUser(UsersDataSet usersDataSet) {
+        loginToProfile.remove(usersDataSet.getLogin());
     }
 
     public UsersDataSet getUserById(String login) throws DBException {
         return dbService.getUser(login);
     }
 
-    public UserProfile getUserBySessionId(String sessionId) {
+    public UsersDataSet getUserBySessionId(String sessionId) {
         return sessionIdToProfile.get(sessionId);
     }
 
-    public void addSession(String sessionId, UserProfile userProfile) {
-        sessionIdToProfile.put(sessionId, userProfile);
+    public void addSession(String sessionId, UsersDataSet usersDataSet) {
+        sessionIdToProfile.put(sessionId, usersDataSet);
     }
 
     public void deleteSession(String sessionId) {
