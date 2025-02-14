@@ -1,6 +1,5 @@
 package DB.dataSets;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -29,7 +28,6 @@ public class UsersDataSet implements Serializable { // Serializable Important to
     }
 
     public UsersDataSet(String login, String password, String email) {
-        this.setId(-1);
         this.setLogin(login);
         this.setEmail(email);
         this.setPassword(password);

@@ -1,6 +1,5 @@
 package DB.executor;
 
-
 import DB.dao.UsersDAO;
 import DB.dataSets.UsersDataSet;
 import org.hibernate.HibernateException;
@@ -11,7 +10,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.service.ServiceRegistry;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 
