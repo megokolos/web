@@ -25,10 +25,7 @@ import servlets.UsersServlet;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-
-        DBService dbService = new DBService();
-        dbService.printConnectInfo();
-        AccountService accountServiceDB = new AccountService(dbService);
+        AccountService accountServiceDB = new AccountService();
 //        accountService.addNewUser(new UserProfile("admin"));
 //        accountService.addNewUser(new UserProfile("test"));
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);

@@ -23,10 +23,7 @@ public class AccountService {
     public AccountService() {
         loginToProfile = new HashMap<>();
         sessionIdToProfile = new HashMap<>();
-    }
-
-    public AccountService(DBService dbService) {
-        this.dbService = dbService;
+        dbService = new DBService();
     }
 
     public void addNewUser(UsersDataSet usersDataSet) throws DBException {
