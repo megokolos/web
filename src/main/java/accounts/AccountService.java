@@ -1,6 +1,5 @@
 package accounts;
 
-import DB.dao.UsersDAO;
 import DB.dataSets.UsersDataSet;
 import DB.executor.DBException;
 import DB.executor.DBService;
@@ -24,6 +23,7 @@ public class AccountService {
         loginToProfile = new HashMap<>();
         sessionIdToProfile = new HashMap<>();
         dbService = new DBService();
+        dbService.printConnectInfo();
     }
 
     public void addNewUser(UsersDataSet usersDataSet) throws DBException {

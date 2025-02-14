@@ -23,12 +23,10 @@ public class UsersDataSet implements Serializable { // Serializable Important to
     @Column(name = "password")
     private String password;
 
-
     //Important to Hibernate!
     @SuppressWarnings("UnusedDeclaration")
     public UsersDataSet() {
     }
-
 
     public UsersDataSet(String login, String password, String email) {
         this.setId(-1);

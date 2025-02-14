@@ -13,10 +13,10 @@ import java.io.IOException;
 
 /**
  * @author v.chibrikov
- *         <p>
- *         Пример кода для курса на https://stepic.org/
- *         <p>
- *         Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
+ * <p>
+ * Пример кода для курса на https://stepic.org/
+ * <p>
+ * Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
  */
 public class SignInServlet extends HttpServlet {
     private final AccountService accountService;
@@ -83,6 +83,5 @@ public class SignInServlet extends HttpServlet {
             response.getWriter().println("Goodbye!");
             response.setStatus(HttpServletResponse.SC_OK);
         }
-
     }
 }

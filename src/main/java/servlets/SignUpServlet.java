@@ -76,7 +76,8 @@ public class SignUpServlet extends HttpServlet {
         response.getWriter().println("Done deleted");
         response.setStatus(HttpServletResponse.SC_OK);
     }
-    private UsersDataSet returnUserByParams (HttpServletRequest request) {
+
+    private UsersDataSet returnUserByParams(HttpServletRequest request) {
         String login = request.getParameter("login");
         String pass = request.getParameter("password");
         String email = request.getParameter("email");
