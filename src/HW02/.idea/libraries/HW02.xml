@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="HW02">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/tester.jar!/" />
+      <root url="jar://$PROJECT_DIR$/server.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
