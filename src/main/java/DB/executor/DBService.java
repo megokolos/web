@@ -63,6 +63,19 @@ public class DBService {
         }
     }
 
+    public UsersDataSet getUserBySessionId(String sessionId) throws DBException {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            UsersDAO dao = new UsersDAO(session);
+            return dao.getUserBySession(sessionId);
+        } catch (HibernateException e) {
+            throw new DBException(e);
+        } finally {
+            session.close();
+        }
+    }
+
     public long addUser(UsersDataSet usersDataSet) throws DBException {
         try {
             Session session = sessionFactory.openSession();
@@ -72,6 +85,46 @@ public class DBService {
             transaction.commit();
             session.close();
             return id;
+        } catch (HibernateException e) {
+            throw new DBException(e);
+        }
+    }
+
+    public void deleteUser(UsersDataSet usersDataSet) throws DBException {
+        try {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            UsersDAO dao = new UsersDAO(session);
+            dao.deleteUser(usersDataSet);
+            transaction.commit();
+            session.close();
+        } catch (HibernateException e) {
+            throw new DBException(e);
+        }
+    }
+
+    public void deleteSession(String sessionID) throws DBException {
+        try {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            UsersDAO dao = new UsersDAO(session);
+            dao.deleteSession(sessionID);
+            transaction.commit();
+            session.close();
+        } catch (HibernateException e) {
+            throw new DBException(e);
+        }
+    }
+
+    public String addSession(String sessionId, UsersDataSet usersDataSet) throws DBException {
+        try {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            UsersDAO dao = new UsersDAO(session);
+            dao.addSession(sessionId, usersDataSet);
+            transaction.commit();
+            session.close();
+            return sessionId;
         } catch (HibernateException e) {
             throw new DBException(e);
         }

@@ -22,6 +22,9 @@ public class UsersDataSet implements Serializable { // Serializable Important to
     @Column(name = "password")
     private String password;
 
+    @Column(name = "session")
+    private String sessionID;
+
     //Important to Hibernate!
     @SuppressWarnings("UnusedDeclaration")
     public UsersDataSet() {
@@ -64,6 +67,14 @@ public class UsersDataSet implements Serializable { // Serializable Important to
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSessionID() {
+        return sessionID;
+    }
+
+    public void setSessionID(String sessionID) {
+        this.sessionID = sessionID;
     }
 
     @Override

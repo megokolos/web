@@ -3,7 +3,6 @@ package servlets;
 import DB.dataSets.UsersDataSet;
 import DB.executor.DBException;
 import accounts.AccountService;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -57,8 +56,17 @@ public class SignUpServlet extends HttpServlet {
     //    change profile
     public void doPut(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
-        UsersDataSet usersDataSet = accountService.getUserBySessionId(request.getRequestedSessionId());
-        accountService.deleteUser(usersDataSet);
+        UsersDataSet usersDataSet = null;
+        try {
+            usersDataSet = accountService.getUserBySessionId(request.getRequestedSessionId());
+        } catch (DBException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            accountService.deleteUser(usersDataSet);
+        } catch (DBException e) {
+            throw new RuntimeException(e);
+        }
         try {
             accountService.addNewUser(returnUserByParams(request));
         } catch (DBException e) {
@@ -72,7 +80,11 @@ public class SignUpServlet extends HttpServlet {
     public void doDelete(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         UsersDataSet usersDataSet = returnUserByParams(request);
-        accountService.deleteUser(usersDataSet);
+        try {
+            accountService.deleteUser(usersDataSet);
+        } catch (DBException e) {
+            throw new RuntimeException(e);
+        }
         response.getWriter().println("Done deleted");
         response.setStatus(HttpServletResponse.SC_OK);
     }

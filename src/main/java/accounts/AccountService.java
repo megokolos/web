@@ -2,9 +2,6 @@ package accounts;
 
 import DB.dataSets.UsersDataSet;
 import DB.executor.DBException;
-import DB.executor.DBService;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author v.chibrikov
@@ -13,43 +10,17 @@ import java.util.Map;
  * <p>
  * Описание курса и лицензия: https://github.com/vitaly-chibrikov/stepic_java_webserver
  */
-public class AccountService {
-    private final Map<String, UsersDataSet> loginToProfile;
-    private final Map<String, UsersDataSet> sessionIdToProfile;
-    private final DBService dbService;
+public interface AccountService {
 
-    public AccountService() {
-        loginToProfile = new HashMap<>();
-        sessionIdToProfile = new HashMap<>();
-        dbService = new DBService();
-        dbService.printConnectInfo();
-    }
+    public void addNewUser(UsersDataSet usersDataSet) throws DBException;
 
-    public void addNewUser(UsersDataSet usersDataSet) throws DBException {
-        dbService.addUser(usersDataSet);
-    }
+    public void deleteUser(UsersDataSet usersDataSet) throws DBException;
 
-    public void addNewUserMap(UsersDataSet UsersDataSet) {
-        loginToProfile.put(UsersDataSet.getLogin(), UsersDataSet);
-    }
+    public UsersDataSet getUserByLogin(String login) throws DBException;
 
-    public void deleteUser(UsersDataSet usersDataSet) {
-        loginToProfile.remove(usersDataSet.getLogin());
-    }
+    public UsersDataSet getUserBySessionId(String sessionId) throws DBException;
 
-    public UsersDataSet getUserByLogin(String login) throws DBException {
-        return dbService.getUser(login);
-    }
+    public void addSession(String sessionId, UsersDataSet usersDataSet) throws DBException;
 
-    public UsersDataSet getUserBySessionId(String sessionId) {
-        return sessionIdToProfile.get(sessionId);
-    }
-
-    public void addSession(String sessionId, UsersDataSet usersDataSet) {
-        sessionIdToProfile.put(sessionId, usersDataSet);
-    }
-
-    public void deleteSession(String sessionId) {
-        sessionIdToProfile.remove(sessionId);
-    }
+    public void deleteSession(String sessionId) throws DBException;
 }
