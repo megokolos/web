@@ -12,15 +12,15 @@ import DB.executor.DBException;
  */
 public interface AccountService {
 
-    public void addNewUser(UsersDataSet usersDataSet) throws DBException;
+     void addNewUser(UsersDataSet usersDataSet) throws DBException;
 
-    public void deleteUser(UsersDataSet usersDataSet) throws DBException;
+     void deleteUser(UsersDataSet usersDataSet) throws DBException;
 
-    public UsersDataSet getUserByLogin(String login) throws DBException;
+     UsersDataSet getUserByLogin(String login) throws DBException;
 
-    public UsersDataSet getUserBySessionId(String sessionId) throws DBException;
+     UsersDataSet getUserBySessionId(String sessionId) throws DBException;
 
-    public void addSession(String sessionId, UsersDataSet usersDataSet) throws DBException;
+     void addSession(String sessionId, UsersDataSet usersDataSet) throws DBException;
 
-    public void deleteSession(String sessionId) throws DBException;
+     void deleteSession(String sessionId) throws DBException;
 }

@@ -30,19 +30,14 @@ public class UsersDAO {
         return (UsersDataSet) criteria.add(Restrictions.eq("session", sessionId)).uniqueResult();
     }
 
-    public String getSession(long id) throws HibernateException {
-        UsersDataSet usersDataSet = (UsersDataSet) session.get(UsersDataSet.class, id);
-        return usersDataSet.getSessionID();
-    }
-
     public void addSession(String sessionId, UsersDataSet usersDataSet) {
         usersDataSet.setSessionID(sessionId);
         session.update(usersDataSet);
     }
 
-    public void deleteSession(String sessionID) {
+    public void deleteSession(String sessionId) {
         Criteria criteria = session.createCriteria(UsersDataSet.class);
-        UsersDataSet user = (UsersDataSet) criteria.add(Restrictions.eq("session", sessionID)).uniqueResult();
+        UsersDataSet user = (UsersDataSet) criteria.add(Restrictions.eq("session", sessionId)).uniqueResult();
         if (user != null) {
             user.setSessionID(null);
             session.update(user);
